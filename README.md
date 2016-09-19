@@ -3,7 +3,7 @@ A plugin for Microsoft.EntityFrameworkCore to support automatically recording da
 
 # How to Use
 
-see more [HowToUse](https://github.com/lovedotnet/Love.Net.EF.AutoHistory/src/HowToUse)
+see more [HowToUse](https://github.com/lovedotnet/Love.Net.EF.AutoHistory/tree/master/src/HowToUse)
 
 ## Install Love.Net.EF.AutoHistory
 
