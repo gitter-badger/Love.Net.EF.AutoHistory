@@ -18,25 +18,25 @@ To enable auto history functionality, need to two steps
 1. `using Microsoft.EntityFrameworkCore;` in your DbContext.
 2. Override the OnModelCreating method, as following:
 
-```csharp
-protected override void OnModelCreating(ModelBuilder modelBuilder) {
-    base.OnModelCreating(modelBuilder);
+	```csharp
+	protected override void OnModelCreating(ModelBuilder modelBuilder) {
+		base.OnModelCreating(modelBuilder);
 
-    // enable auto history functionality.
-    modelBuilder.EnableAutoHistory();
-}
-```
+		// enable auto history functionality.
+		modelBuilder.EnableAutoHistory();
+	}
+	```
 
 3. call `_context.EnsureAutoHistory();` before `await _context.SaveChangesAsync();`
 
-```csharp
-[HttpPost]
-public async Task<int> Post([FromBody]Agenda agenda) {
-      _context.Agenda.Add(agenda);
+	```csharp
+	[HttpPost]
+	public async Task<int> Post([FromBody]Agenda agenda) {
+		_context.Agenda.Add(agenda);
 
-      // ensure auto history
-      _context.EnsureAutoHistory();
+		// ensure auto history
+		_context.EnsureAutoHistory();
 
-      return await _context.SaveChangesAsync();
-}
-```
+		return await _context.SaveChangesAsync();
+	}
+	```
