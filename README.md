@@ -1,9 +1,9 @@
 # Love.Net.EF.AutoHistory
-A plugin for Microsoft.EntityFrameworkCore to support automatically recording data changes history.
+A plugin for **Microsoft.EntityFrameworkCore** to support automatically recording data changes history.
 
 # How to Use
 
-See more [HowToUse](https://github.com/lovedotnet/Love.Net.EF.AutoHistory/tree/master/src/HowToUse)
+See more [How To Use](https://github.com/lovedotnet/Love.Net.EF.AutoHistory/tree/master/src/HowToUse)
 
 ## Install Love.Net.EF.AutoHistory
 
