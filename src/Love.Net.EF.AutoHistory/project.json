@@ -1,0 +1,47 @@
+﻿{
+  "version": "1.0.0-*",
+  "description": "A plugin for Microsoft.EntityFrameworkCore to support automatically recording data changes history.",
+  "authors": [ "rigofunc", "rigofunc@outlook.com", "lotosbin", "lotosbin@gmail.com" ],
+  "packOptions": {
+    "summary": "A plugin for Microsoft.EntityFrameworkCore to support automatically recording data changes history.",
+    "owners": [ "rigofunc", "rigofunc@outlook.com", "lotosbin", "lotosbin@gmail.com" ],
+    "projectUrl": "https://github.com/lovedotnet/Love.Net.EF.AutoHistory",
+    "licenseUrl": "https://github.com/lovedotnet/Love.Net.EF.AutoHistory/blob/master/LICENSE",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/lovedotnet/Love.Net.EF.AutoHistory.git"
+    },
+    "tags": [
+      "netcore",
+      "entity",
+      "framework",
+      "core",
+      "entity-framework-core",
+      "ef",
+      "data",
+      "O/RM",
+      "auto",
+      "autohistory",
+      "history"
+    ]
+  },
+  "buildOptions": {
+    "optimize": true,
+    "xmlDoc": true,
+    "warningsAsErrors": true,
+    "nowarn": [
+      "CS1591"
+    ]
+  },
+  "dependencies": {
+    "NETStandard.Library": "1.6.0",
+    "Newtonsoft.Json": "9.0.1",
+    "Microsoft.EntityFrameworkCore": "1.0.*",
+    "Microsoft.EntityFrameworkCore.Relational": "1.0.*"
+  },
+  "frameworks": {
+    "netstandard1.6": {
+
+    }
+  }
+}
