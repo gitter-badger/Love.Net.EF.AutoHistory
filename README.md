@@ -43,4 +43,4 @@ To enable auto history functionality, need to two steps
 
 # Extensions
 
-The ##better way## to `ensure auto history` is to override the DbContext `SaveChangesAsync()` and `SaveChanges()` methods.
+The **better way** to `ensure auto history` is to override the DbContext `SaveChangesAsync()` and `SaveChanges()` methods.
