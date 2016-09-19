@@ -21,8 +21,9 @@ namespace HowToUse.Models {
 
         protected override void OnModelCreating(ModelBuilder modelBuilder) {
             base.OnModelCreating(modelBuilder);
-
+            // enable auto history
             modelBuilder.EnableAutoHistory();
+
             modelBuilder.ConfigureAgenda();
         }
 

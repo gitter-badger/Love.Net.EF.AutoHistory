@@ -13,7 +13,7 @@ To install Love.Net.EF.AutoHistory, run the following command in the Package Man
 
 ## Enable auto history
 
-To enable auto history functionality, need to two steps
+To enable auto history functionality, need to following steps
 
 1. `using Microsoft.EntityFrameworkCore;` in your DbContext.
 2. Override the OnModelCreating method, as following:
@@ -51,8 +51,9 @@ To enable auto history functionality, need to two steps
 
         protected override void OnModelCreating(ModelBuilder modelBuilder) {
             base.OnModelCreating(modelBuilder);
-
+            // enable auto history
             modelBuilder.EnableAutoHistory();
+
             modelBuilder.ConfigureAgenda();
         }
 
