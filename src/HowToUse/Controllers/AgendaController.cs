@@ -19,9 +19,6 @@ namespace HowToUse.Controllers {
         public async Task<int> Post([FromBody]Agenda agenda) {
             _context.Agenda.Add(agenda);
 
-            // ensure auto history
-            _context.EnsureAutoHistory();
-
             return await _context.SaveChangesAsync();
         }
 

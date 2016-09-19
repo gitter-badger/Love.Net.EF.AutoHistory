@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.Threading;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace HowToUse.Models {
     internal static class AgendaConfiguration {
@@ -22,6 +24,34 @@ namespace HowToUse.Models {
 
             modelBuilder.EnableAutoHistory();
             modelBuilder.ConfigureAgenda();
+        }
+
+        public override int SaveChanges() {
+            // ensure auto history
+            this.EnsureAutoHistory();
+
+            return base.SaveChanges();
+        }
+
+        public override int SaveChanges(bool acceptAllChangesOnSuccess) {
+            // ensure auto history
+            this.EnsureAutoHistory();
+
+            return base.SaveChanges(acceptAllChangesOnSuccess);
+        }
+
+        public override Task<int> SaveChangesAsync(bool acceptAllChangesOnSuccess, CancellationToken cancellationToken = default(CancellationToken)) {
+            // ensure auto history
+            this.EnsureAutoHistory();
+
+            return base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken);
+        }
+
+        public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default(CancellationToken)) {
+            // ensure auto history
+            this.EnsureAutoHistory();
+
+            return base.SaveChangesAsync(cancellationToken);
         }
     }
 }

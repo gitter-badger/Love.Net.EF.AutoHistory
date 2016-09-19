@@ -18,29 +18,70 @@ To enable auto history functionality, need to two steps
 1. `using Microsoft.EntityFrameworkCore;` in your DbContext.
 2. Override the OnModelCreating method, as following:
 
-	```csharp
-	protected override void OnModelCreating(ModelBuilder modelBuilder) {
-		base.OnModelCreating(modelBuilder);
+    ```csharp
+    protected override void OnModelCreating(ModelBuilder modelBuilder) {
+        base.OnModelCreating(modelBuilder);
 
-		// enable auto history functionality.
-		modelBuilder.EnableAutoHistory();
-	}
-	```
+        // enable auto history functionality.
+        modelBuilder.EnableAutoHistory();
+    }
+    ```
 
 3. Call `_context.EnsureAutoHistory();` before `await _context.SaveChangesAsync();`
 
-	```csharp
-	[HttpPost]
-	public async Task<int> Post([FromBody]Agenda agenda) {
-		_context.Agenda.Add(agenda);
+    ```csharp
+    [HttpPost]
+    public async Task<int> Post([FromBody]Agenda agenda) {
+        _context.Agenda.Add(agenda);
 
-		// ensure auto history
-		_context.EnsureAutoHistory();
+        // ensure auto history
+        _context.EnsureAutoHistory();
 
-		return await _context.SaveChangesAsync();
-	}
-	```
+        return await _context.SaveChangesAsync();
+    }
+    ```
 
-# Extensions
+4. The **better way** to `ensure auto history` is to override the DbContext `SaveChangesAsync()` and `SaveChanges()` methods.
 
-The **better way** to `ensure auto history` is to override the DbContext `SaveChangesAsync()` and `SaveChanges()` methods.
+    ```csharp
+    public class AgendaContext : DbContext {
+        public AgendaContext(DbContextOptions<AgendaContext> options) : base(options) { }
+
+        public DbSet<Agenda> Agenda { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder) {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.EnableAutoHistory();
+            modelBuilder.ConfigureAgenda();
+        }
+
+        public override int SaveChanges() {
+            // ensure auto history
+            this.EnsureAutoHistory();
+
+            return base.SaveChanges();
+        }
+
+        public override int SaveChanges(bool acceptAllChangesOnSuccess) {
+            // ensure auto history
+            this.EnsureAutoHistory();
+
+            return base.SaveChanges(acceptAllChangesOnSuccess);
+        }
+
+        public override Task<int> SaveChangesAsync(bool acceptAllChangesOnSuccess, CancellationToken cancellationToken = default(CancellationToken)) {
+            // ensure auto history
+            this.EnsureAutoHistory();
+
+            return base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken);
+        }
+
+        public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default(CancellationToken)) {
+            // ensure auto history
+            this.EnsureAutoHistory();
+
+            return base.SaveChangesAsync(cancellationToken);
+        }
+    }
+    ```
