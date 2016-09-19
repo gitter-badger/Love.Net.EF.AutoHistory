@@ -3,7 +3,7 @@ A plugin for Microsoft.EntityFrameworkCore to support automatically recording da
 
 # How to Use
 
-see more [HowToUse](https://github.com/lovedotnet/Love.Net.EF.AutoHistory/tree/master/src/HowToUse)
+See more [HowToUse](https://github.com/lovedotnet/Love.Net.EF.AutoHistory/tree/master/src/HowToUse)
 
 ## Install Love.Net.EF.AutoHistory
 
@@ -27,7 +27,7 @@ To enable auto history functionality, need to two steps
 	}
 	```
 
-3. call `_context.EnsureAutoHistory();` before `await _context.SaveChangesAsync();`
+3. Call `_context.EnsureAutoHistory();` before `await _context.SaveChangesAsync();`
 
 	```csharp
 	[HttpPost]
@@ -40,3 +40,7 @@ To enable auto history functionality, need to two steps
 		return await _context.SaveChangesAsync();
 	}
 	```
+
+# Extensions
+
+The ##better way## to `ensure auto history` is to override the DbContext `SaveChangesAsync()` and `SaveChanges()` methods.
