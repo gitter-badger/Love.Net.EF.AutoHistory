@@ -29,3 +29,14 @@ protected override void OnModelCreating(ModelBuilder modelBuilder) {
 
 3. call `_context.EnsureAutoHistory();` before `await _context.SaveChangesAsync();`
 
+```csharp
+[HttpPost]
+public async Task<int> Post([FromBody]Agenda agenda) {
+      _context.Agenda.Add(agenda);
+
+      // ensure auto history
+      _context.EnsureAutoHistory();
+
+      return await _context.SaveChangesAsync();
+}
+```

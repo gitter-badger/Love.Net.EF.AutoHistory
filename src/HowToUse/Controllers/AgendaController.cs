@@ -22,7 +22,7 @@ namespace HowToUse.Controllers {
             // ensure auto history
             _context.EnsureAutoHistory();
 
-            return await _context.SaveChangesAsync(true);
+            return await _context.SaveChangesAsync();
         }
 
         [HttpPut("{id}")]
