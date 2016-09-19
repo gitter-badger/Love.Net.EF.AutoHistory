@@ -1,2 +1,31 @@
 # Love.Net.EF.AutoHistory
 A plugin for Microsoft.EntityFrameworkCore to support automatically recording data changes history.
+
+# How to Use
+
+see more [HowToUse](https://github.com/lovedotnet/Love.Net.EF.AutoHistory/src/HowToUse)
+
+## Install Love.Net.EF.AutoHistory
+
+To install Love.Net.EF.AutoHistory, run the following command in the Package Manager Console
+
+`PM> Install-Package Love.Net.EF.AutoHistory`
+
+## Enable auto history
+
+To enable auto history functionality, need to two steps
+
+1. `using Microsoft.EntityFrameworkCore;` in your DbContext.
+2. Override the OnModelCreating method, as following:
+
+```csharp
+protected override void OnModelCreating(ModelBuilder modelBuilder) {
+    base.OnModelCreating(modelBuilder);
+
+    // enable auto history functionality.
+    modelBuilder.EnableAutoHistory();
+}
+```
+
+3. call `_context.EnsureAutoHistory();` before `await _context.SaveChangesAsync();`
+

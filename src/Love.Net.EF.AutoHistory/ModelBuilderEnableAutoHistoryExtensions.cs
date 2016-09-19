@@ -10,8 +10,8 @@ namespace Microsoft.EntityFrameworkCore {
         /// <summary>
         /// Enables the automatic recording change history.
         /// </summary>
-        /// <param name="modelBuilder">The model builder.</param>
-        /// <returns>ModelBuilder.</returns>
+        /// <param name="modelBuilder">The <see cref="ModelBuilder"/> to enable auto history functionality.</param>
+        /// <returns>The <see cref="ModelBuilder"/> to enable auto history functionality.</returns>
         public static ModelBuilder EnableAutoHistory(this ModelBuilder modelBuilder) {
             modelBuilder.Entity<AutoHistory>(b => {
                 b.Property(c => c.SourceId).IsRequired().HasMaxLength(50);
