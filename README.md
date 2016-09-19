@@ -1,4 +1,6 @@
 # Love.Net.EF.AutoHistory
+
+[![Join the chat at https://gitter.im/lovedotnet/Love.Net.EF.AutoHistory](https://badges.gitter.im/lovedotnet/Love.Net.EF.AutoHistory.svg)](https://gitter.im/lovedotnet/Love.Net.EF.AutoHistory?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 A plugin for **Microsoft.EntityFrameworkCore** to support automatically recording data changes history.
 
 # How to Use
